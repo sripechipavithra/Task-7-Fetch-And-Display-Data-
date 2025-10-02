@@ -1,0 +1,132 @@
+:root{
+  --bg1:#071026;
+  --bg2:#0f1724;
+  --card: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --accent1: #06b6d4;
+  --accent2: #3b82f6;
+  --success: #22c55e;
+  --muted: rgba(230,238,248,0.65);
+  --error: #ff6b6b;
+  --radius: 14px;
+  --ff: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--ff);
+  background: radial-gradient(circle at 10% 10%, rgba(59,130,246,0.08), transparent 20%),
+              linear-gradient(180deg,var(--bg1), var(--bg2));
+  color:#dbeafe;
+  -webkit-font-smoothing:antialiased;
+  display:grid;
+  place-items:center;
+  padding:32px;
+}
+
+.wrap{width:min(720px,96%);}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+}
+
+.card-head h1{margin:0 0 6px 0; font-size:1.35rem}
+.muted{margin:0;color:var(--muted); font-size:0.95rem}
+
+.field{margin-top:16px}
+label{
+  display:block;
+  font-size:0.85rem;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+input, textarea{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.04);
+  background: var(--card);
+  color:inherit;
+  font-size:0.95rem;
+  transition: box-shadow .14s, border-color .14s, transform .12s;
+}
+input:focus, textarea:focus{
+  outline:none;
+  border-color: rgba(59,130,246,0.9);
+  box-shadow: 0 10px 30px rgba(59,130,246,0.08);
+  transform: translateY(-1px);
+}
+.error{display:block; height:18px; margin-top:8px; color:var(--error); font-size:0.82rem}
+
+.input-error{
+  border-color: rgba(255,107,107,0.9) !important;
+  box-shadow: 0 8px 24px rgba(255,107,107,0.04);
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:18px;
+}
+.btn{
+  padding:11px 18px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  letter-spacing:0.2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color:white;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.14);
+  transition: transform .12s, opacity .12s;
+}
+.btn:hover{transform: translateY(-3px)}
+.btn:active{transform: translateY(-1px)}
+.btn--ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:none;
+  color:var(--muted);
+}
+
+#formFeedback{margin-top:14px; min-height:48px;}
+
+/* success box */
+.success-box{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(34,197,94,0.12);
+  background: linear-gradient(90deg, rgba(34,197,94,0.06), rgba(16,185,129,0.03));
+  color:#bbf7d0;
+  font-weight:600;
+  animation: pop .28s ease;
+}
+
+/* subtle shake for invalid submit */
+@keyframes shake {
+  10%{transform:translateX(-5px)}
+  20%{transform:translateX(5px)}
+  30%{transform:translateX(-4px)}
+  40%{transform:translateX(4px)}
+  50%{transform:translateX(-2px)}
+  60%{transform:translateX(2px)}
+  100%{transform:none}
+}
+.card.shake{animation: shake .45s ease}
+
+/* responsive */
+@media (max-width:420px){
+  .card{padding:18px}
+  .actions{flex-direction:column; align-items:stretch}
+  .btn{width:100%}
+}
